@@ -359,7 +359,7 @@ export default {
   width: 100% !important;
   height: var(--fullscreen) !important;
   margin: 0;
-  transition: all 0.5s ease;
+  /* transition: all 0.5s ease; */
   padding: 0;
 }
 
@@ -549,7 +549,7 @@ textarea {
   border-radius: 0;
   /* flex-grow: 1; */
   width: 100% !important;
-  height: 200px;
+  height: 100%;
   padding: 5px;
 }
 

@@ -46,7 +46,7 @@ export default {
         },
         {
           title: "Microsoft Azure Data Fundamentals",          
-          link: "https://talentaid.biji-biji.com/storage/certificates/Certificate_46943_57_760e8.pdf?sv=2019-07-07&sr=b&sig=kMHlP6xRpzw92xOEqIiyMH%2BXw9RIgl4W8OLAkemlm1M%3D&se=2024-02-22T16%3A49%3A38Z&sp=r",
+          link: "https://drive.google.com/file/d/1HXMmTrM1kXqXYI9NAx0GpFKbk16oIJLD/view?usp=drive_link",
           image: "microsoft_azure_data_fundamentals.jpg",
           tags: ["Microsoft Azure", "Data"],
           issuedOn: "9 February 2024",

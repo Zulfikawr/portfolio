@@ -151,9 +151,9 @@ export default new Vuex.Store({
         windowContent: "Experiences",
         windowContentPadding: {
           top: null,
-          right: null,
+          right: "50px",
           bottom: null,
-          left: null,
+          left: "50px",
           mobile: {
             top: "20px", // Mobile specific padding
             right: "20px", // Mobile specific padding
@@ -182,9 +182,9 @@ export default new Vuex.Store({
         windowContent: "Educations",
         windowContentPadding: {
           top: null,
-          right: null,
+          right: "50px",
           bottom: null,
-          left: null,
+          left: "50px",
           mobile: {
             top: "20px", // Mobile specific padding
             right: "20px", // Mobile specific padding
@@ -244,9 +244,9 @@ export default new Vuex.Store({
         windowContent: "publications",
         windowContentPadding: {
           top: null,
-          right: "50px",
+          right: "20px",
           bottom: null,
-          left: "50px",
+          left: "20px",
           mobile: {
             top: "20px", // Mobile specific padding
             right: "20px", // Mobile specific padding
@@ -272,7 +272,7 @@ export default new Vuex.Store({
         windowState: "close",
         displayName: "Mail",
         windowComponent: "mail",
-        windowContent: "mail",
+        windowContent: "",
         windowContentPadding: {
           top: "2px",
           right: "2px",

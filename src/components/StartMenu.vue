@@ -160,6 +160,10 @@ a {
   color: white;
 }
 
+label {
+  cursor: pointer;
+}
+
 </style>
 <script>
 import StartMenuFolder from "./StartMenuFolder.vue";
