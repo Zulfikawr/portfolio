@@ -16,7 +16,7 @@
       <!-- <h3 class="title">Technical Skills</h3> -->
       <div class="grid-container">
         <div v-for="(skillCategory, index) in technicalSkills" :key="index">
-          <h4 class="grid-item">{{ skillCategory.title }}</h4>
+          <p class="grid-item">{{ skillCategory.title }}</p>
           <div class="button-container">
             <button v-for="(skill, index) in skillCategory.skills" :key="index">
               <img :src="getIcon(skill.icon)">
@@ -157,31 +157,41 @@ export default {
 /* Tabs */
 .tabs {
   display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
+  font-size: 13px;
+  justify-content: left;
+  padding-top: 20px;
 }
 
 .tab {
   cursor: pointer;
-  padding: 10px;
-  background: rgb(189, 190, 189);
-  box-shadow: 1.5px 1.5px black;
-  border-top: solid rgb(250, 250, 250) 1.5px;
-  border-left: solid rgb(250, 250, 250) 1.5px;
-  border-right: solid rgb(90, 90, 90) 1.5px;
-  margin-right: 5px;
+  padding: 7px 5px 5px 5px;
+  border-top: solid rgb(250, 250, 250) 2px;
+  border-left: solid rgba(250, 250, 250) 2px;
+  border-right: solid rgb(90, 90, 90) 2px;
+  border-bottom: solid rgb(250, 250, 250) 1px;
+  /* border-top-right-radius: 3px;
+  border-top-left-radius: 3px; */
 }
 
 .active-tab {
-  background-color: rgb(133, 133, 133);
-  color: #fff;
-  top: 1px;
+  font-weight: bold;
+  border-bottom: 2px solid rgb(195, 195, 195);
+  position: relative;
+  z-index: 9999;
 }
 
 /* Content */
+.content {
+  border-top: solid rgb(250, 250, 250) 2px;
+  border-left: solid rgb(250, 250, 250) 2px;
+  border-bottom: solid rgb(90, 90, 90) 2px;
+  border-right: solid rgb(90, 90, 90) 2px;
+  margin-top: -2px;
+  position: relative;
+  z-index: 1;
+}
 .title {
   text-align: center;
-  font-weight: bold;
   margin-bottom: 20px;
 }
 
@@ -194,17 +204,19 @@ export default {
 }
 
 .grid-item {
-  border: 2px solid white;
+  /* border: 2px solid white;
   background: rgb(189, 190, 189);
   box-shadow: 1.5px 1.5px black;
   border-top: solid rgb(250, 250, 250) 1.5px;
   border-left: solid rgb(250, 250, 250) 1.5px;
   border-bottom: solid rgb(90, 90, 90) 1.5px;
-  border-right: solid rgb(90, 90, 90) 1.5px;
+  border-right: solid rgb(90, 90, 90) 1.5px; */
   padding: 8px;
   margin: auto;
   width: 75%;
   text-align: center;
+  font-weight: bold;
+  font-size: 15px;
 }
 
 .button-container {

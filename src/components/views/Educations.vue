@@ -107,13 +107,6 @@ export default {
 .title {
   display: inline-block;
   text-align: center;
-  /* border: 2px solid white;
-  background: rgb(189, 190, 189);
-  box-shadow: 1.5px 1.5px black;
-  border-top: solid rgb(250, 250, 250) 1.5px;
-  border-left: solid rgb(250, 250, 250) 1.5px;
-  border-bottom: solid rgb(90, 90, 90) 1.5px;
-  border-right: solid rgb(90, 90, 90) 1.5px; */
   padding: 20px;
 }
 

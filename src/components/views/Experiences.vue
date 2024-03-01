@@ -9,9 +9,14 @@
 
     <div class="tabs">
       <div class="tab" :class="{ 'active-tab': activeTab === 'professional' }" @click="setActiveTab('professional')">
-        Professional</div>
+        Professional
+      </div>
       <div class="tab" :class="{ 'active-tab': activeTab === 'organizational' }" @click="setActiveTab('organizational')">
-        Organizational</div>
+        Organizational
+      </div>
+      <div class="tab" :class="{ 'active-tab': activeTab === 'volunteer' }" @click="setActiveTab('volunteer')">
+        Volunteer
+      </div>
     </div>
 
     <div v-if="activeTab === 'professional'" class="professional">
@@ -45,6 +50,25 @@
           <p class="paragraph">{{ organizational.description }}</p>
           <ul>
             <li v-for="(responsibility, index) in organizational.responsibilities" :key="index">{{ responsibility }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div v-if="activeTab === 'volunteer'" class="volunteer">
+      <div class="content" v-for="(volunteer, index) in volunteers" :key="index">
+        <div class="title-container">
+          <div class="title">
+            <img class="img" :src="getImageSrc(volunteer.image)">
+            <p class="name">{{ volunteer.company }}</p>
+          </div>
+        </div>
+        <div class="desc">
+          <p class="event">{{ volunteer.event }}</p>
+          <p class="role">{{ volunteer.position }} <span class="year">{{ volunteer.duration }}</span></p>
+          <p class="paragraph">{{ volunteer.description }}</p>
+          <ul>
+            <li v-for="(responsibility, index) in volunteer.responsibilities" :key="index">{{ responsibility }}</li>
           </ul>
         </div>
       </div>
@@ -115,14 +139,66 @@ export default {
           ]
         },
         {
-          image: null,
-          company: null,
-          position: "Youth Development Staff",
-          duration: "Jan 2022 - Jan 2023",
-          description: "I was part of the Youth Development Department in the Student Association of International Relations at UPNVJ. My role involved helping organize and plan regular tutoring sessions covering academic and non-academic subjects. The goal was to support fellow International Relations students in enhancing their skills and knowledge. Additionally, I contributed to creating a dynamic content plan for social media, highlighting impressive academic projects and creative talents within our faculty.",
+          image: "man2jkt.png",
+          company: "Majelis Perwakilan Kelas MAN 2 Jakarta",
+          position: "Representation",
+          duration: "Jun 2019 - Jun 2021 ",
+          description: "",
           responsibilities: [
             "Assisted in managed and conceived the design of recurring tutoring sessions focusing on both academic topics and non-academic subject, facilitate International Relations students at UPNVJ to develop and improve their knowledge and abilities.",
             "Implemented a dynamic content roadmap on social media, showcasing outstanding academic projects as well as creative talents within the faculty."
+          ]
+        },
+      ],
+      volunteers: [
+        {
+          image: "himahi.png",
+          company: "Himpunan Mahasiswa Hubungan Internasional UPNVJ",
+          event: "IREX (International Relations Exhibition) Paper Competition",
+          position: "Public Relation Staff",
+          duration: "Oct 2022",
+          description: "I formed important partnerships with media outlets and student groups, securing sponsorships and organizing extensive event promotion through digital marketing. I put together a speaker series on academic writing and research, inviting 5 accomplished professionals in academia to lead seminars and workshops for more than 200 undergraduate students from various universities. My role included managing communication between participants, sponsors, speakers, and the media to ensure smooth visibility and information flow.",
+          responsibilities: [
+            "Established strategic partnerships with external media outlets and student organizations, securing sponsorships and coordinating widespread event publicity through integrated digital marketing.",
+            "Curated a speaker series on academic writing and research by inviting 5 distinguished professionals in academia to conduct seminars and workshops for over 200 undergraduate students from different universities.",
+            "Responsible to manage communications between participants, sponsors, speakers, and media to ensure smooth visibility and information."
+          ]
+        },
+        {
+          image: null,
+          company: "Himpunan Mahasiswa Hubungan Internasional UPNVJ",
+          event: "VETAMUN (Veteran Jakarta Model United Nations)",
+          position: "Technical Affairs Staff",
+          duration: "Sep 2022",
+          description: "I kept four digital platforms, like live streaming and video conferencing, running smoothly all the time. These platforms were used at the same time by participants to recreate the setting of United Nations council chambers. I fixed technical problems and gave technical advice to the organizing committee and speakers. I helped them prepare digitized background guides, multimedia aids, and presentations so they could host, moderate, and represent countries effectively.",
+          responsibilities: [
+            "Maintained continuous uptime across 4 digital platforms including live streaming, video conferencing, cloud document sharing and instant messaging applications utilized concurrently by participants to replicate United Nation council chambers setting.",
+            "Diagnosed and troubleshoot technical issues, and provide technical guidance to organizing committee and speakers supporting preparation of digitized background guides, multimedia aids and presentations facilitating their roles as hosts, moderators and country representatives."
+          ]
+        },
+        {
+          image: null,
+          company: "Himpunan Mahasiswa Hubungan Internasional UPNVJ",
+          event: "IRONMAN 5.0 (Student Orientation)",
+          position: "Logistic Staff",
+          duration: "Aug 2022",
+          description: "I made sure everything ran smoothly for the HI UPNVJ new student introduction event. This included setting up equipment, distributing materials, and preparing the venue. I helped participants by providing logistical support, answering questions, addressing concerns, and making sure their onboarding experience during the event was seamless.",
+          responsibilities: [
+            "Ensured smooth operation by handling equipment setup, material distribution, and venue preparation for the HI UPNVJ new student introduction event.",
+            "Provided logistical support to participants, resolving inquiries, addressing concerns, and ensuring a seamless onboarding experience during the event."
+          ]
+        },
+        {
+          image: null,
+          company: "Himpunan Mahasiswa Hubungan Internasional UPNVJ",
+          event: "HI VISIT (Study Tour)",
+          position: "Event Organizer Staff",
+          duration: "Jun - Jul 2022",
+          description: "I arranged and carried out three virtual meetups with international relations organizations from different campuses. I handled the logistics and made sure there were interactive activities. I worked with teams from different areas to create interesting online programs, discussion topics, and opportunities for digital networking. Each meetup had more than 50 virtual attendees. I also helped with effective online communication and outreach strategies, connecting with international relations organizations from various campuses to encourage collaboration and sharing of knowledge among members.",
+          responsibilities: [
+            "Organized and executed 3 successful virtual meetups with other IR organizations from various campuses, managing logistics and interactive activities.",
+            "Partnered with cross-functional teams to develop engaging online programs, discussion topics, and digital networking opportunities for over 50 virtual attendees per meetup.",
+            "Facilitated effective online communication and outreach strategies with IR organizations across campuses, fostering virtual collaboration and knowledge-sharing among members."
           ]
         },
       ],
@@ -191,28 +267,39 @@ export default {
 /* Tabs */
 .tabs {
   display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
+  font-size: 13px;
+  justify-content: left;
+  padding-top: 20px;
 }
 
 .tab {
   cursor: pointer;
-  padding: 10px;
-  background: rgb(189, 190, 189);
-  box-shadow: 1.5px 1.5px black;
-  border-top: solid rgb(250, 250, 250) 1.5px;
-  border-left: solid rgb(250, 250, 250) 1.5px;
-  border-right: solid rgb(90, 90, 90) 1.5px;
-  margin-right: 5px;
+  padding: 7px 5px 5px 5px;
+  border-top: solid rgb(250, 250, 250) 2px;
+  border-left: solid rgba(250, 250, 250) 2px;
+  border-right: solid rgb(90, 90, 90) 2px;
+  border-bottom: solid rgb(250, 250, 250) 1px;
+  /* border-top-right-radius: 3px;
+  border-top-left-radius: 3px; */
 }
 
 .active-tab {
-  background-color: rgb(133, 133, 133);
-  color: #fff;
-  top: 1px;
+  font-weight: bold;
+  border-bottom: 2px solid rgb(195, 195, 195);
+  position: relative;
+  z-index: 9999;
 }
 
 /* Content */
+.content {
+  border-top: solid rgb(250, 250, 250) 2px;
+  border-left: solid rgb(250, 250, 250) 2px;
+  border-bottom: solid rgb(90, 90, 90) 2px;
+  border-right: solid rgb(90, 90, 90) 2px;
+  margin-top: -2px;
+  position: relative;
+  z-index: 1;
+}
 .title-container {
   display: flex;
   justify-content: center;
@@ -221,13 +308,6 @@ export default {
 .title {
   display: inline-block;
   text-align: center;
-  /* border: 2px solid white;
-  background: rgb(189, 190, 189);
-  box-shadow: 1.5px 1.5px black;
-  border-top: solid rgb(250, 250, 250) 1.5px;
-  border-left: solid rgb(250, 250, 250) 1.5px;
-  border-bottom: solid rgb(90, 90, 90) 1.5px;
-  border-right: solid rgb(90, 90, 90) 1.5px; */
   padding: 20px;
 }
 
