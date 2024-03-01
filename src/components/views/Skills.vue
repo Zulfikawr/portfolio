@@ -7,8 +7,13 @@
     </div>
     <hr>
 
-    <div class="content">
-      <h3 class="title">Technical Skills</h3>
+    <div class="tabs">
+      <div class="tab" :class="{ 'active-tab': activeTab === 'technical' }" @click="setActiveTab('technical')">Technical Skills</div>
+      <div class="tab" :class="{ 'active-tab': activeTab === 'soft' }" @click="setActiveTab('soft')">Soft Skills</div>
+    </div>
+
+    <div v-if="activeTab === 'technical'" class="content">
+      <!-- <h3 class="title">Technical Skills</h3> -->
       <div class="grid-container">
         <div v-for="(skillCategory, index) in technicalSkills" :key="index">
           <h4 class="grid-item">{{ skillCategory.title }}</h4>
@@ -22,8 +27,8 @@
       </div>
     </div>
 
-    <div class="content">
-      <h3 class="title" style="margin-bottom: 10px;">Soft Skills</h3>
+    <div v-if="activeTab === 'soft'" class="content">
+      <!-- <h3 class="title" style="margin-bottom: 10px;">Soft Skills</h3> -->
         <div class="button-container">
           <button v-for="(skill, index) in softSkills" :key="index">
             <label>{{ skill }}</label>
@@ -40,6 +45,7 @@ export default {
     return {
       headerTitle: 'Skills',
       headerSubtitle: 'My Skills and Proficiency',
+      activeTab: 'technical',
       technicalSkills: [
       {
           title: "Data Analysis",
@@ -95,6 +101,9 @@ export default {
     };
   },
   methods: {
+    setActiveTab(tab) {
+      this.activeTab = tab;
+    },
     getIcon(iconName) {
       return require(`@/assets/icons/software/${iconName}`);
     },
@@ -145,6 +154,30 @@ export default {
   padding-top: 10px;
 }
 
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.tab {
+  cursor: pointer;
+  padding: 10px;
+  background: rgb(189, 190, 189);
+  box-shadow: 1.5px 1.5px black;
+  border-top: solid rgb(250, 250, 250) 1.5px;
+  border-left: solid rgb(250, 250, 250) 1.5px;
+  border-right: solid rgb(90, 90, 90) 1.5px;
+  margin-right: 5px;
+}
+
+.active-tab {
+  background-color: rgb(133, 133, 133);
+  color: #fff;
+  top: 1px;
+}
+
 /* Content */
 .title {
   text-align: center;
@@ -168,7 +201,7 @@ export default {
   border-left: solid rgb(250, 250, 250) 1.5px;
   border-bottom: solid rgb(90, 90, 90) 1.5px;
   border-right: solid rgb(90, 90, 90) 1.5px;
-  padding: 10px;
+  padding: 8px;
   margin: auto;
   width: 75%;
   text-align: center;
@@ -181,7 +214,7 @@ export default {
   text-align: center;
   width: 80%;
   margin: auto;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .button-container button {

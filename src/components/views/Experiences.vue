@@ -7,19 +7,46 @@
     </div>
     <hr>
 
-    <div class="content" v-for="(experience, index) in experiences" :key="index">
-      <div class="title-container">
-        <div class="title">
-          <img class="img" :src="getImageSrc(experience.image)">
-          <p class="name">{{ experience.company }}</p>
+    <div class="tabs">
+      <div class="tab" :class="{ 'active-tab': activeTab === 'professional' }" @click="setActiveTab('professional')">
+        Professional</div>
+      <div class="tab" :class="{ 'active-tab': activeTab === 'organizational' }" @click="setActiveTab('organizational')">
+        Organizational</div>
+    </div>
+
+    <div v-if="activeTab === 'professional'" class="professional">
+      <div class="content" v-for="(professional, index) in professionals" :key="index">
+        <div class="title-container">
+          <div class="title">
+            <img class="img" :src="getImageSrc(professional.image)">
+            <p class="name">{{ professional.company }}</p>
+          </div>
+        </div>
+        <div class="desc">
+          <p class="role">{{ professional.position }} <span class="year">{{ professional.duration }}</span></p>
+          <p class="paragraph">{{ professional.description }}</p>
+          <ul>
+            <li v-for="(responsibility, index) in professional.responsibilities" :key="index">{{ responsibility }}</li>
+          </ul>
         </div>
       </div>
-      <div class="desc">
-        <p class="role">{{ experience.position }} <span class="year">{{ experience.duration }}</span></p>
-        <p class="paragraph">{{ experience.description }}</p>
-        <ul>
-          <li v-for="(responsibility, index) in experience.responsibilities" :key="index">{{ responsibility }}</li>
-        </ul>
+    </div>
+
+    <div v-if="activeTab === 'organizational'" class="organizational">
+      <div class="content" v-for="(organizational, index) in organizationals" :key="index">
+        <div class="title-container">
+          <div class="title">
+            <img class="img" :src="getImageSrc(organizational.image)">
+            <p class="name">{{ organizational.company }}</p>
+          </div>
+        </div>
+        <div class="desc">
+          <p class="role">{{ organizational.position }} <span class="year">{{ organizational.duration }}</span></p>
+          <p class="paragraph">{{ organizational.description }}</p>
+          <ul>
+            <li v-for="(responsibility, index) in organizational.responsibilities" :key="index">{{ responsibility }}</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -30,8 +57,9 @@ export default {
   data() {
     return {
       headingTitle: 'Experiences',
-      headingSubtitle: 'My Professional Experiences',
-      experiences: [
+      headingSubtitle: 'My Professional/Organizational Experiences',
+      activeTab: 'professional',
+      professionals: [
         {
           image: "quantium.png",
           company: "Quantium | Data Science & AI",
@@ -73,27 +101,60 @@ export default {
           description: "Working as a data collector at SMRC, the national political survey organization, provided me with valuable insights into the field research process. Part of my responsibilities included obtaining the necessary permits from local authorities at various administrative levels, such as subdistrict, urban village, Hamlet, and Neighborhood, to ensure smooth survey operations in designated areas. Additionally, I conducted face-to-face interviews with ten individuals every week to gather their perspectives on their political subjectivity. After collecting this information, I carefully converted it into digital data, ensuring accuracy and ease of analysis. Through this experience, I developed my communication skills while gaining firsthand knowledge of the crucial role data collection plays in informing political research and decision-making processes.",
           responsibilities: []
         }
-        // Add more experiences here
-      ]
+      ],
+      organizationals: [
+        {
+          image: "himahi.png",
+          company: "Himpunan Mahasiswa Hubungan Internasional UPNVJ",
+          position: "Youth Development Staff",
+          duration: "Jan 2022 - Jan 2023",
+          description: "I was part of the Youth Development Department in the Student Association of International Relations at UPNVJ. My role involved helping organize and plan regular tutoring sessions covering academic and non-academic subjects. The goal was to support fellow International Relations students in enhancing their skills and knowledge. Additionally, I contributed to creating a dynamic content plan for social media, highlighting impressive academic projects and creative talents within our faculty.",
+          responsibilities: [
+            "Assisted in managed and conceived the design of recurring tutoring sessions focusing on both academic topics and non-academic subject, facilitate International Relations students at UPNVJ to develop and improve their knowledge and abilities.",
+            "Implemented a dynamic content roadmap on social media, showcasing outstanding academic projects as well as creative talents within the faculty."
+          ]
+        },
+        {
+          image: null,
+          company: null,
+          position: "Youth Development Staff",
+          duration: "Jan 2022 - Jan 2023",
+          description: "I was part of the Youth Development Department in the Student Association of International Relations at UPNVJ. My role involved helping organize and plan regular tutoring sessions covering academic and non-academic subjects. The goal was to support fellow International Relations students in enhancing their skills and knowledge. Additionally, I contributed to creating a dynamic content plan for social media, highlighting impressive academic projects and creative talents within our faculty.",
+          responsibilities: [
+            "Assisted in managed and conceived the design of recurring tutoring sessions focusing on both academic topics and non-academic subject, facilitate International Relations students at UPNVJ to develop and improve their knowledge and abilities.",
+            "Implemented a dynamic content roadmap on social media, showcasing outstanding academic projects as well as creative talents within the faculty."
+          ]
+        },
+      ],
     };
   },
   methods: {
-  getImageSrc(imageName, isHeaderImage = false) {
-    let imagePath;
-    if (isHeaderImage) {
-      imagePath = require("@/assets/icons/win95/" + imageName);
-    } else {
-      imagePath = require("@/assets/images/experiences/" + imageName);
+    setActiveTab(tab) {
+      this.activeTab = tab;
+    },
+    getImageSrc(imageName, isHeaderImage = false) {
+      if (!imageName) {
+        return null;
+      }
+      let imagePath;
+      try {
+        if (isHeaderImage) {
+          imagePath = require("@/assets/icons/win95/" + imageName);
+        } else {
+          imagePath = require("@/assets/images/experiences/professional/" + imageName);
+        }
+      } catch (error) {
+        imagePath = require("@/assets/images/experiences/organizational/" + imageName);
+      }
+      return imagePath;
     }
-    return imagePath;
+
   }
-}
 };
 </script>
 
 
 <style scoped>
-
 /* Global */
 .header,
 .content {
@@ -115,7 +176,7 @@ export default {
   padding-bottom: 20px;
 }
 
-.header-title{
+.header-title {
   text-align: center;
   font-weight: bold;
 }
@@ -127,6 +188,30 @@ export default {
   padding-top: 10px;
 }
 
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.tab {
+  cursor: pointer;
+  padding: 10px;
+  background: rgb(189, 190, 189);
+  box-shadow: 1.5px 1.5px black;
+  border-top: solid rgb(250, 250, 250) 1.5px;
+  border-left: solid rgb(250, 250, 250) 1.5px;
+  border-right: solid rgb(90, 90, 90) 1.5px;
+  margin-right: 5px;
+}
+
+.active-tab {
+  background-color: rgb(133, 133, 133);
+  color: #fff;
+  top: 1px;
+}
+
 /* Content */
 .title-container {
   display: flex;
@@ -136,13 +221,13 @@ export default {
 .title {
   display: inline-block;
   text-align: center;
-  border: 2px solid white;
+  /* border: 2px solid white;
   background: rgb(189, 190, 189);
   box-shadow: 1.5px 1.5px black;
   border-top: solid rgb(250, 250, 250) 1.5px;
   border-left: solid rgb(250, 250, 250) 1.5px;
   border-bottom: solid rgb(90, 90, 90) 1.5px;
-  border-right: solid rgb(90, 90, 90) 1.5px;
+  border-right: solid rgb(90, 90, 90) 1.5px; */
   padding: 20px;
 }
 
@@ -151,13 +236,13 @@ export default {
 }
 
 .name {
-  font-size: 16px;
   font-weight: bold;
   text-align: center;
 }
 
 .desc {
   padding: 0 30px 0 30px;
+  font-size: 15px;
 }
 
 .role {
@@ -172,7 +257,6 @@ export default {
 
 .paragraph {
   text-align: justify;
-  font-size: 15px;
   line-height: 1.3;
 }
 
@@ -198,12 +282,15 @@ h4 {
     line-height: 1.3;
     padding: 15px 0;
   }
+
   .name {
     margin-top: 15px;
   }
+
   .desc {
     padding: 0;
   }
+
   .desc li {
     display: none;
   }
