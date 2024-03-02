@@ -13,7 +13,6 @@
     </div>
 
     <div v-if="activeTab === 'technical'" class="content">
-      <!-- <h3 class="title">Technical Skills</h3> -->
       <div class="grid-container">
         <div v-for="(skillCategory, index) in technicalSkills" :key="index">
           <p class="grid-item">{{ skillCategory.title }}</p>
@@ -28,7 +27,6 @@
     </div>
 
     <div v-if="activeTab === 'soft'" class="content">
-      <!-- <h3 class="title" style="margin-bottom: 10px;">Soft Skills</h3> -->
         <div class="button-container">
           <button v-for="(skill, index) in softSkills" :key="index">
             <label>{{ skill }}</label>

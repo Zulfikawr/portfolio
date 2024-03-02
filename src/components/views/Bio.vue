@@ -156,13 +156,12 @@ export default {
   margin: 10px 5px 2px 5px;
   padding: 5px;
   padding-bottom: 2.5px;
-  border: 2px solid white;
   background: rgb(189, 190, 189);
-  box-shadow: 1.5px 1.5px black;
-  border-top: solid rgb(250, 250, 250) 1.5px;
-  border-left: solid rgb(250, 250, 250) 1.5px;
-  border-bottom: solid rgb(90, 90, 90) 1.5px;
-  border-right: solid rgb(90, 90, 90) 1.5px;
+  box-shadow: 1px 1.5px black;
+  border-top: solid rgb(250, 250, 250) 1px;
+  border-left: solid rgb(250, 250, 250) 1px;
+  border-bottom: solid rgb(90, 90, 90) 1px;
+  border-right: solid rgb(90, 90, 90) 1px;
 }
 
 .badge label {

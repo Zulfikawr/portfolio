@@ -19,9 +19,9 @@
       </div>
     </div>
 
-    <div v-if="activeTab === 'professional'" class="professional">
-      <div class="content" v-for="(professional, index) in professionals" :key="index">
-        <div class="title-container">
+    <div v-if="activeTab === 'professional'" class="content">
+      <div v-for="(professional, index) in professionals" :key="index">
+        <div class="container">
           <div class="title">
             <img class="img" :src="getImageSrc(professional.image)">
             <p class="name">{{ professional.company }}</p>
@@ -34,12 +34,13 @@
             <li v-for="(responsibility, index) in professional.responsibilities" :key="index">{{ responsibility }}</li>
           </ul>
         </div>
+        <hr>
       </div>
     </div>
 
-    <div v-if="activeTab === 'organizational'" class="organizational">
-      <div class="content" v-for="(organizational, index) in organizationals" :key="index">
-        <div class="title-container">
+    <div v-if="activeTab === 'organizational'" class="content">
+      <div v-for="(organizational, index) in organizationals" :key="index">
+        <div class="container">
           <div class="title">
             <img class="img" :src="getImageSrc(organizational.image)">
             <p class="name">{{ organizational.company }}</p>
@@ -52,12 +53,13 @@
             <li v-for="(responsibility, index) in organizational.responsibilities" :key="index">{{ responsibility }}</li>
           </ul>
         </div>
+        <hr>
       </div>
     </div>
 
-    <div v-if="activeTab === 'volunteer'" class="volunteer">
-      <div class="content" v-for="(volunteer, index) in volunteers" :key="index">
-        <div class="title-container">
+    <div v-if="activeTab === 'volunteer'" class="content">
+      <div v-for="(volunteer, index) in volunteers" :key="index">
+        <div class="container">
           <div class="title">
             <img class="img" :src="getImageSrc(volunteer.image)">
             <p class="name">{{ volunteer.company }}</p>
@@ -71,6 +73,7 @@
             <li v-for="(responsibility, index) in volunteer.responsibilities" :key="index">{{ responsibility }}</li>
           </ul>
         </div>
+        <hr>
       </div>
     </div>
   </div>
@@ -165,7 +168,7 @@ export default {
           ]
         },
         {
-          image: null,
+          image: "himahi.png",
           company: "Himpunan Mahasiswa Hubungan Internasional UPNVJ",
           event: "VETAMUN (Veteran Jakarta Model United Nations)",
           position: "Technical Affairs Staff",
@@ -177,7 +180,7 @@ export default {
           ]
         },
         {
-          image: null,
+          image: "himahi.png",
           company: "Himpunan Mahasiswa Hubungan Internasional UPNVJ",
           event: "IRONMAN 5.0 (Student Orientation)",
           position: "Logistic Staff",
@@ -189,7 +192,7 @@ export default {
           ]
         },
         {
-          image: null,
+          image: "himahi.png",
           company: "Himpunan Mahasiswa Hubungan Internasional UPNVJ",
           event: "HI VISIT (Study Tour)",
           position: "Event Organizer Staff",
@@ -296,11 +299,13 @@ export default {
   border-left: solid rgb(250, 250, 250) 2px;
   border-bottom: solid rgb(90, 90, 90) 2px;
   border-right: solid rgb(90, 90, 90) 2px;
+  padding: 10px;
   margin-top: -2px;
   position: relative;
   z-index: 1;
 }
-.title-container {
+
+.container {
   display: flex;
   justify-content: center;
 }

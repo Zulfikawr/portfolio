@@ -250,7 +250,7 @@ export default new Vuex.Store({
           mobile: {
             top: "20px", // Mobile specific padding
             right: "20px", // Mobile specific padding
-            bottom: "10px", // Mobile specific padding
+            bottom: null, // Mobile specific padding
             left: "20px", // Mobile specific padding
           },
         },
