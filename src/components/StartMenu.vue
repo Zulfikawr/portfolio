@@ -5,57 +5,52 @@
     </div>
     <div class="socials">
 
-      <a @click="showFolderMenu = !showFolderMenu">
-        <div v-if="!showFolderMenu" class="bar"> <!-- Hide the folder icon when showFolderMenu is true -->
+      <a @click="toggleFolderMenu">
+        <div v-if="!showFolderMenu" class="bar">
           <img class="social-image" src="@/assets/icons/win95/folder.png" />
-            <label><u>F</u>older&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▶</label>
+          <label><u>F</u>older&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▶</label>
         </div>
         <div v-if="showFolderMenu" class="start-menu-folder">
           <start-menu-folder></start-menu-folder>
         </div>
       </a>
 
-      <a
-        href="https://www.linkedin.com/in/muhammad-zulfikar-076a7b227"
-        target="_blank">
+      <a @click="openLink('https://www.linkedin.com/in/muhammad-zulfikar-076a7b227')" rel="noopener noreferrer">
         <div class="bar">
           <img class="social-image" src="@/assets/icons/social/linkedin.png" />
           <u>L</u>inkedIn
         </div>
       </a>
 
-      <a href="https://github.com/muhammad-zulfikar" target="_blank">
+      <a @click="openLink('https://github.com/muhammad-zulfikar')" rel="noopener noreferrer">
         <div class="bar">
           <img class="social-image" src="@/assets/icons/social/github.png" />
           <u>G</u>itHub
         </div>
       </a>
 
-      <a href="https://wa.me/+6285156453730" target="_blank">
+      <a @click="openLink('https://wa.me/+6285156453730')" rel="noopener noreferrer">
         <div class="bar">
-          <img
-            class="social-image"
-            src="@/assets/icons/social/whatsapp.png"
-          />
+          <img class="social-image" src="@/assets/icons/social/whatsapp.png" />
           <div class="social-text"><u>W</u>hatsApp</div>
         </div>
       </a>
 
-      <a href="https://telegram.com/spookies/" target="_blank">
+      <a @click="openLink('https://telegram.com/spookies/')" rel="noopener noreferrer">
         <div class="bar">
           <img class="social-image" src="@/assets/icons/social/telegram.png" />
           <u>T</u>elegram
         </div>
-      </a>      
+      </a>
 
-      <a href="https://www.kaggle.com/zulfikarmuhammad/" target="_blank">
+      <a @click="openLink('https://www.kaggle.com/zulfikarmuhammad/')" rel="noopener noreferrer">
         <div class="bar">
           <img class="social-image" src="@/assets/icons/social/kaggle.png" />
           <u>K</u>aggle
         </div>
       </a>
 
-      <a href="/files/resume.pdf">
+      <a href="/files/resume.pdf" target="_blank" rel="noopener noreferrer">
         <div class="bar">
           <img class="social-image" src="@/assets/icons/win95/text.png" />
           <u>R</u>ésumé
@@ -64,12 +59,6 @@
 
       <div class="divider"></div>
 
-      <!-- <a>
-        <div class="bar">
-          <img class="social-image" src="@/assets/icons/win95/sleep.png" />
-          <u>S</u>leep
-        </div>
-      </a> -->
       <a href="about:blank">
         <div class="bar">
           <img class="social-image" src="@/assets/icons/win95/shutdown.png" />
@@ -186,6 +175,9 @@ export default {
         windowID: windowId,
       };
       this.$store.commit("setWindowState", payload);
+    },
+    openLink(link) {
+      window.open(link, "_blank");
     },
     showFolderMenu() {
       this.showFolderMenu = !this.showFolderMenu;

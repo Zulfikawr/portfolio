@@ -335,9 +335,9 @@ export default new Vuex.Store({
         windowContent: "Quantium",
         windowContentPadding: {
           top: null,
-          right: null,
+          right: "10px",
           bottom: null,
-          left: null,
+          left: "10px",
           mobile: {
             top: "20px", // Mobile specific padding
             right: "20px", // Mobile specific padding

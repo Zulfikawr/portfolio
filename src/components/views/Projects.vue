@@ -19,6 +19,10 @@
       </div>
       <p class="desc">{{ project.desc }}</p>
       <div class="link">
+        <button @click="openWindow(project.windowId)">
+          <img src='@/assets/icons/win95/directory.png'>
+          <label>Documentation</label>
+        </button>
         <button @click="redirectToGitHub(project.githubLink)">
           <img src='@/assets/icons/social/github.png'>
           <label>GitHub</label>
