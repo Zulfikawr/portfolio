@@ -7,29 +7,89 @@
     </div>
     <hr>
 
-    <div class="content" v-for="(project, index) in projects" :key="index">
-      <a class="title" @click="openWindow(project.windowId)">
-        {{ project.title }}
-      </a>
-      <iframe :src="project.iframeSrc" type="application/pdf"></iframe>
-      <div class="tags">
-        <button v-for="(tags, tagIndex) in project.tags" :key="tagIndex">
-          <label>{{ tags }}</label>
-        </button>
+    <div class="tabs">
+      <div class="tab" :class="{ 'active-tab': activeTab === 'data-analysis' }" @click="setActiveTab('data-analysis')">
+        Data Analysis
       </div>
-      <p class="desc">{{ project.desc }}</p>
-      <div class="link">
-        <button @click="openWindow(project.windowId)">
-          <img src='@/assets/icons/win95/directory.png'>
-          <label>Documentation</label>
-        </button>
-        <button @click="redirectToGitHub(project.githubLink)">
-          <img src='@/assets/icons/social/github.png'>
-          <label>GitHub</label>
-        </button>
+      <div class="tab" :class="{ 'active-tab': activeTab === 'web-dev' }" @click="setActiveTab('web-dev')">
+        Web Development
       </div>
-      <hr>
+      <div class="tab" :class="{ 'active-tab': activeTab === 'others' }" @click="setActiveTab('others')">
+        Others
+      </div>
     </div>
+
+    <div v-if="activeTab === 'data-analysis'">
+      <div class="content" v-for="(data, index) in datas" :key="index">
+        <a class="title" @click="openWindow(data.windowId)">
+          {{ data.title }}
+        </a>
+        <iframe :src="data.iframeSrc"></iframe>
+        <div class="tags">
+          <button v-for="(tags, tagIndex) in data.tags" :key="tagIndex">
+            <label>{{ tags }}</label>
+          </button>
+        </div>
+        <p class="desc">{{ data.desc }}</p>
+        <div class="link">
+          <button @click="openWindow(data.windowId)">
+            <img src='@/assets/icons/win95/directory.png'>
+            <label>Documentation</label>
+          </button>
+          <button @click="redirectToGitHub(data.githubLink)">
+            <img src='@/assets/icons/social/github.png'>
+            <label>GitHub</label>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div v-if="activeTab === 'web-dev'">
+      <div class="content" v-for="(webdev, index) in webdevs" :key="index">
+        <a class="title" @click="openWindow(webdev.windowId)">
+          {{ webdev.title }}
+        </a>
+        <img :src="webdev.iframeSrc" class="img"></img>
+        <div class="tags">
+          <button v-for="(tags, tagIndex) in webdev.tags" :key="tagIndex">
+            <label>{{ tags }}</label>
+          </button>
+        </div>
+        <p class="desc">{{ webdev.desc }}</p>
+        <div class="link">
+          <button @click="openWindow(webdev.windowId)">
+            <img src='@/assets/icons/win95/search.png'>
+            <label>Demo</label>
+          </button>
+          <button @click="redirectToGitHub(webdev.githubLink)">
+            <img src='@/assets/icons/social/github.png'>
+            <label>GitHub</label>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div v-if="activeTab === 'others'">
+      <div class="content" v-for="(other, index) in others" :key="index">
+        <a class="title" @click="redirectToGitHub(other.githubLink)">
+          {{ other.title }}
+        </a>
+        <img :src="other.iframeSrc" class="img"></img>
+        <div class="tags">
+          <button v-for="(tags, tagIndex) in other.tags" :key="tagIndex">
+            <label>{{ tags }}</label>
+          </button>
+        </div>
+        <p class="desc">{{ other.desc }}</p>
+        <div class="link">
+          <button @click="redirectToGitHub(other.githubLink)">
+            <img src='@/assets/icons/social/github.png'>
+            <label>GitHub</label>
+          </button>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -39,7 +99,8 @@ export default {
     return {
       headerTitle: 'Projects',
       headerSubtitle: 'A complete lists of my projects. You can also see it in <a href="https://github.com/muhammad-zulfikar">GitHub</a>',
-      projects: [
+      activeTab: 'data-analysis',
+      datas: [
         {
           title: "Retail Analytics - Data Analysis at Quantium",
           windowId: "quantiumWindow",
@@ -67,9 +128,55 @@ export default {
         },
         // Add more projects here
       ],
+      webdevs: [
+        {
+          title: "Windows 95 Portfolio (This Website)",
+          windowId: "win95portfolioWindow",
+          iframeSrc:"/files/projects/webdev/win95portfolio/win95portfolio.png",
+          tags: ["Vue", "Firebase"],
+          desc:
+            "A Windows 95 themed personal portfolio website. My current portfolio website",
+          githubLink: "https://github.com/muhammad-zulfikar/portfolio",
+        },
+        {
+          title: "VS Code Portfolio",
+          windowId: "vscodeportfolioWindow",
+          iframeSrc:"/files/projects/webdev/vscodeportfolio/vscodeportfolio.png",
+          tags: ["React", "GitHub Pages"],
+          desc:
+            "A VS Code themed personal portfolio website. My old portfolio website",
+          githubLink: "https://github.com/muhammad-zulfikar/portfolio",
+        },
+        {
+          title: "Landing Page",
+          windowId: "landingpageWindow",
+          iframeSrc: "/files/projects/webdev/landingpage/landingpage.gif",
+          tags: ["HTML", "CSS", "Javascript"],
+          desc:
+            "A simple landing page with search and sign up/sign in button form",
+          githubLink:
+            "https://github.com/muhammad-zulfikar/SigninPage",
+        },
+        // Add more projects here
+      ],
+      others: [
+        {
+          title: "Adblock Magisk Module",
+          windowId: "",
+          iframeSrc:"/files/projects/other/adblock/adblock.gif",
+          tags: ["Shell", "Android", "Terminal"],
+          desc:
+            "Simple and effective adblock module written in Shell for Magisk that blocks ads system-wide on magisk-rooted Android devices.",
+          githubLink: "https://github.com/muhammad-zulfikar/adblock_magisk_module",
+        },
+        // Add more projects here
+      ],
     };
   },
   methods: {
+    setActiveTab(tab) {
+      this.activeTab = tab;
+    },
     getImageSrc(imageName, isHeaderImage = false) {
       let imagePath;
       if (isHeaderImage) {
@@ -87,14 +194,13 @@ export default {
       this.$store.commit("setWindowState", payload);
     },
     redirectToGitHub(githubLink) {
-      window.open(githubLink, "_blank"); 
+      window.open(githubLink, "_blank");
     },
   }
 };
 </script>
 
 <style scoped>
-
 /* Global */
 .header,
 .content {
@@ -116,7 +222,7 @@ export default {
   padding-bottom: 20px;
 }
 
-.header-title{
+.header-title {
   text-align: center;
   font-weight: bold;
 }
@@ -128,7 +234,44 @@ export default {
   padding-top: 10px;
 }
 
+/* Tabs */
+.tabs {
+  display: flex;
+  font-size: 13px;
+  justify-content: left;
+  padding-top: 20px;
+}
+
+.tab {
+  cursor: pointer;
+  padding: 7px 5px 5px 5px;
+  border-top: solid rgb(250, 250, 250) 2px;
+  border-left: solid rgba(250, 250, 250) 2px;
+  border-right: solid rgb(90, 90, 90) 2px;
+  border-bottom: solid rgb(250, 250, 250) 1px;
+  /* border-top-right-radius: 3px;
+    border-top-left-radius: 3px; */
+}
+
+.active-tab {
+  font-weight: bold;
+  border-bottom: 2px solid rgb(195, 195, 195);
+  position: relative;
+  z-index: 9999;
+}
+
 /* Content */
+.content {
+  border-top: solid rgb(250, 250, 250) 2px;
+  border-left: solid rgb(250, 250, 250) 2px;
+  border-bottom: solid rgb(90, 90, 90) 2px;
+  border-right: solid rgb(90, 90, 90) 2px;
+  padding: 10px;
+  margin-top: -2px;
+  position: relative;
+  z-index: 1;
+}
+
 .title {
   display: flex;
   flex-direction: column;
@@ -139,10 +282,25 @@ export default {
   font-weight: bold;
   font-size: 16px;
   cursor: pointer;
+  margin-top: 20px;
+}
+
+.img {
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
 }
 
 iframe {
-  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
   height: 300px;
   margin-top: 20px;
 }
@@ -180,7 +338,8 @@ iframe {
 .desc {
   font-size: 15px;
   line-height: 1.3;
-  text-align: justify;
+  text-align: center;
+  padding: 30px;
 }
 
 .link {
@@ -235,12 +394,13 @@ h4 {
 
 /* Media query */
 @media screen and (max-width: 1024px) {
-  .tags button {
-    margin-bottom: 20px;
+  .desc {
+    margin-top: 20px;
+    padding: 5px;
   }
-  iframe {
-  height: 200px;
-}
-}
 
+  iframe {
+    height: 200px;
+  }
+}
 </style>

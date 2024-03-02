@@ -89,9 +89,9 @@ export default new Vuex.Store({
         windowContent: "projects",
         windowContentPadding: {
           top: null,
-          right: null,
+          right: "20px",
           bottom: null,
-          left: null,
+          left: "20px",
           mobile: {
             top: "20px", // Mobile specific padding
             right: "20px", // Mobile specific padding
@@ -297,6 +297,7 @@ export default new Vuex.Store({
         showInNavbar: true,
       },
 
+      // Individual Projects //
       {
         windowId: "idxWindow",
         windowState: "close",
@@ -305,9 +306,9 @@ export default new Vuex.Store({
         windowContent: "IDX",
         windowContentPadding: {
           top: null,
-          right: null,
+          right: "25px",
           bottom: null,
-          left: null,
+          left: "25px",
           mobile: {
             top: "20px", // Mobile specific padding
             right: "20px", // Mobile specific padding
@@ -335,9 +336,9 @@ export default new Vuex.Store({
         windowContent: "Quantium",
         windowContentPadding: {
           top: null,
-          right: "10px",
+          right: "25px",
           bottom: null,
-          left: "10px",
+          left: "25px",
           mobile: {
             top: "20px", // Mobile specific padding
             right: "20px", // Mobile specific padding
@@ -353,6 +354,93 @@ export default new Vuex.Store({
         iconImage: "directory.png",
         altText: "Quantium",
         fullscreen: false,
+        showInAppGrid: false,
+        showInNavbar: true,
+      },
+      {
+        windowId: "win95portfolioWindow",
+        windowState: "close",
+        displayName: "Windows 95 Portfolio",
+        windowComponent: "window",
+        windowContent: "Win95Portfolio",
+        windowContentPadding: {
+          top: "0",
+          right: "0",
+          bottom: "0",
+          left: "0",
+          mobile: {
+            top: "20px", // Mobile specific padding
+            right: "20px", // Mobile specific padding
+            bottom: "10px", // Mobile specific padding
+            left: "20px", // Mobile specific padding
+          },
+        },
+        position: "absolute",
+        positionX: "23.6vw",
+        positionY: "9.5vh",
+        positionXMobile: "2vw", // Mobile specific position
+        positionYMobile: "10vh", // Mobile specific position
+        iconImage: "directory.png",
+        altText: "Win 95 Portfolio",
+        fullscreen: true,
+        showInAppGrid: false,
+        showInNavbar: true,
+      },
+      {
+        windowId: "vscodeportfolioWindow",
+        windowState: "close",
+        displayName: "VS Code Portfolio",
+        windowComponent: "window",
+        windowContent: "VSCodePortfolio",
+        windowContentPadding: {
+          top: "0",
+          right: "0",
+          bottom: "0",
+          left: "0",
+          mobile: {
+            top: "20px", // Mobile specific padding
+            right: "20px", // Mobile specific padding
+            bottom: "10px", // Mobile specific padding
+            left: "20px", // Mobile specific padding
+          },
+        },
+        position: "absolute",
+        positionX: "23.6vw",
+        positionY: "9.5vh",
+        positionXMobile: "2vw", // Mobile specific position
+        positionYMobile: "10vh", // Mobile specific position
+        iconImage: "directory.png",
+        altText: "VS Code Portfolio",
+        fullscreen: true,
+        showInAppGrid: false,
+        showInNavbar: true,
+      },
+      {
+        windowId: "landingpageWindow",
+        windowState: "close",
+        displayName: "Landing Page",
+        windowComponent: "window",
+        windowContent: "LandingPage",
+        windowContentPadding: {
+          top: "0",
+          right: "0",
+          bottom: "0",
+          left: "0",
+          mobile: {
+            top: "20px", // Mobile specific padding
+            right: "20px", // Mobile specific padding
+            bottom: "10px", // Mobile specific padding
+            left: "20px", // Mobile specific padding
+          },
+        },
+        position: "absolute",
+        positionX: "23.6vw",
+        positionY: "9.5vh",
+        positionXMobile: "2vw", // Mobile specific position
+        positionYMobile: "10vh", // Mobile specific position
+        iconImage: "directory.png",
+        altText: "Landing Page",
+        fullscreen: true,
         showInAppGrid: false,
         showInNavbar: true,
       },

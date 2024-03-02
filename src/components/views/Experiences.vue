@@ -323,6 +323,7 @@ export default {
 .name {
   font-weight: bold;
   text-align: center;
+  margin-bottom: 0;
 }
 
 .desc {
@@ -359,13 +360,23 @@ h4 {
 }
 
 @media screen and (max-width: 1024px) {
+
+  .container {
+    margin-bottom: 0;
+  }
+
+  .desc {
+    margin-top: 0;
+  }
+
   .role {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     line-height: 1.3;
-    padding: 15px 0;
+    padding: 0 0 15px 0;
+    margin-top: 0;
   }
 
   .name {
@@ -373,7 +384,7 @@ h4 {
   }
 
   .desc {
-    padding: 0;
+    padding: 10px;
   }
 
   .desc li {

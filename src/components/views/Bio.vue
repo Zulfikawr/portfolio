@@ -153,7 +153,7 @@ export default {
 .badge button {
   display: flex;
   align-items: center;
-  margin: 10px 5px 2px 5px;
+  margin: 5px 5px 5px 5px;
   padding: 5px;
   padding-bottom: 2.5px;
   background: rgb(189, 190, 189);
@@ -165,7 +165,10 @@ export default {
 }
 
 .badge label {
-  font-size: 11px;
+  font-size: 11.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* Content */

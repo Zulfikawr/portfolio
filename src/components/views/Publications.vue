@@ -278,6 +278,7 @@ export default {
   font-size: 14px;
   text-align: justify;
   margin-bottom: 30px;
+  padding: 20px;
 }
 
 .abstract a {
@@ -290,6 +291,14 @@ h3,
 h4 {
   padding: 0;
   margin: 0;
+}
+
+/* Media query */
+@media screen and (max-width: 1024px) {
+  .abstract {
+    margin-top: 20px;
+    padding: 5px;
+  }
 }
 
 </style>

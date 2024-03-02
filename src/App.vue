@@ -55,26 +55,33 @@
 
 
 <script>
-/*-----------------------*\
-    Import Components
-\*-----------------------*/
+// Import Components //
+
+// Template //
 import Boot from "./components/template/Boot";
 import Navbar from "./components/windows/Navbar";
-import AppGrid from "./components/AppGrid";
+import AppGrid from "./components/windows/AppGrid";
 import Window from "./components/template/Window";
-import StartMenu from "./components/StartMenu";
+import Mail from "./components/template/Mail";
+import StartMenu from "./components/windows/StartMenu";
 import Popup from "./components/template/Popup";
+
+// Windows //
 import Bio from "./components/views/Bio";
 import Resume from "./components/views/Resume";
 import Projects from "./components/views/Projects";
 import Publications from "./components/views/Publications";
 import Certifications from "./components/views/Certifications";
-import IDX from "./components/windows/projects/idx/idx";
-import Quantium from "./components/windows/projects/quantium";
-import Mail from "./components/template/Mail";
 import Educations from "./components/views/Educations";
 import Experiences from "./components/views/Experiences";
 import Skills from "./components/views/Skills";
+
+// Projects //
+import IDX from "./components/windows/projects/data_analysis/idx";
+import Quantium from "./components/windows/projects/data_analysis/quantium";
+import Win95Portfolio from "./components/windows/projects/webdev/win95portfolio";
+import VSCodePortfolio from "./components/windows/projects/webdev/vscodeportfolio";
+import LandingPage from "./components/windows/projects/webdev/landingpage";
 
 export default {
   name: "App",
@@ -106,6 +113,9 @@ export default {
     Educations,
     Experiences,
     Skills,
+    Win95Portfolio,
+    VSCodePortfolio,
+    LandingPage,
 
     // TopNavbar,
   },
@@ -288,5 +298,15 @@ html {
   display: block;
   top: 0 !important;
   right: 0 !important;
+}
+
+.fullscreen iframe {
+  height: 500px;
+}
+
+@media only screen and (max-width: 600px) {
+  .fullscreen iframe {
+    height: 200px;
+  }
 }
 </style>
